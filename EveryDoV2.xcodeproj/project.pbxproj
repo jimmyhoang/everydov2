@@ -15,6 +15,7 @@
 		FF6D7F4C1EFAE11D006B6368 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6D7F4A1EFAE11D006B6368 /* Main.storyboard */; };
 		FF6D7F4E1EFAE11D006B6368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF6D7F4D1EFAE11D006B6368 /* Assets.xcassets */; };
 		FF6D7F511EFAE11D006B6368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6D7F4F1EFAE11D006B6368 /* LaunchScreen.storyboard */; };
+		FF6D7F601EFB0AFD006B6368 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6D7F5F1EFB0AFD006B6368 /* TaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		FF6D7F4D1EFAE11D006B6368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF6D7F501EFAE11D006B6368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF6D7F521EFAE11D006B6368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF6D7F5E1EFB0AFD006B6368 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
+		FF6D7F5F1EFB0AFD006B6368 /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,11 +72,9 @@
 				FF6D7F451EFAE11D006B6368 /* MasterViewController.m */,
 				FF6D7F471EFAE11D006B6368 /* DetailViewController.h */,
 				FF6D7F481EFAE11D006B6368 /* DetailViewController.m */,
+				FF6D7F5E1EFB0AFD006B6368 /* TaskViewController.h */,
+				FF6D7F5F1EFB0AFD006B6368 /* TaskViewController.m */,
 				FF6D7F4A1EFAE11D006B6368 /* Main.storyboard */,
-				FF6D7F4D1EFAE11D006B6368 /* Assets.xcassets */,
-				FF6D7F4F1EFAE11D006B6368 /* LaunchScreen.storyboard */,
-				FF6D7F521EFAE11D006B6368 /* Info.plist */,
-				FF6D7F411EFAE11D006B6368 /* EveryDoV2.xcdatamodeld */,
 				FF6D7F3B1EFAE11D006B6368 /* Supporting Files */,
 			);
 			path = EveryDoV2;
@@ -82,6 +83,10 @@
 		FF6D7F3B1EFAE11D006B6368 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF6D7F4D1EFAE11D006B6368 /* Assets.xcassets */,
+				FF6D7F4F1EFAE11D006B6368 /* LaunchScreen.storyboard */,
+				FF6D7F521EFAE11D006B6368 /* Info.plist */,
+				FF6D7F411EFAE11D006B6368 /* EveryDoV2.xcdatamodeld */,
 				FF6D7F3C1EFAE11D006B6368 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -160,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF6D7F491EFAE11D006B6368 /* DetailViewController.m in Sources */,
+				FF6D7F601EFB0AFD006B6368 /* TaskViewController.m in Sources */,
 				FF6D7F461EFAE11D006B6368 /* MasterViewController.m in Sources */,
 				FF6D7F401EFAE11D006B6368 /* AppDelegate.m in Sources */,
 				FF6D7F3D1EFAE11D006B6368 /* main.m in Sources */,
@@ -322,6 +328,7 @@
 				FF6D7F571EFAE11D006B6368 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

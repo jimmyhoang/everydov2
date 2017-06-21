@@ -8,6 +8,7 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "TaskViewController.h"
 
 @interface MasterViewController ()
 
@@ -18,13 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
@@ -41,7 +40,7 @@
 - (void)insertNewObject:(id)sender {
     
     UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Add item" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
     __block UITextField* bTitle;
     __block UITextField* bDescription;
@@ -49,16 +48,19 @@
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder   = @"Enter Title";
+        textField.text          = [defaults objectForKey:@"title"];
         bTitle                  = textField;
     }];
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder   = @"Enter Description";
+        textField.text          = [defaults objectForKey:@"description"];
         bDescription            = textField;
     }];
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder   = @"Enter Priority (1-10)";
+        textField.text          = [(NSNumber*)[defaults objectForKey:@"priority"] stringValue];
         bPriority               = textField;
     }];
 
@@ -87,9 +89,7 @@
 
 }
 
-
 #pragma mark - Segues
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -101,19 +101,15 @@
     }
 }
 
-
 #pragma mark - Table View
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[self.fetchedResultsController sections] count];
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -122,12 +118,10 @@
     return cell;
 }
 
-
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -144,14 +138,11 @@
     }
 }
 
-
 - (void)configureCell:(UITableViewCell *)cell withTodo:(Todo *)Todo {
     cell.textLabel.text = Todo.title;
 }
 
-
 #pragma mark - Fetched results controller
-
 - (NSFetchedResultsController<Todo *> *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
@@ -233,5 +224,9 @@
     [self.tableView endUpdates];
 }
 
+#pragma mark - Button Action
+- (IBAction)defaultButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"showDefaults" sender:self];
+}
 
 @end
